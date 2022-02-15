@@ -18,29 +18,29 @@
         android:textSize="32sp"
         android:layout_marginBottom="48dp"/>
 
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Nome do aluno"/>
+
 
     <EditText
         android:id="@+id/nota1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Nota 1"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"/>
 
     <EditText
         android:id="@+id/nota2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Nota 2"
-        android:inputType="number"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"/>
-
-    <EditText
-        android:id="@+id/faltas"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="Faltas"
         android:inputType="number"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,13 +72,5 @@
     android:text=""
     android:textSize="24sp"
     android:textColor="@color/purple_700" />
-
-    <TextView
-        android:id="@+id/situacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="24sp"
-        android:textColor="@color/purple_700" />
 
 </LinearLayout>

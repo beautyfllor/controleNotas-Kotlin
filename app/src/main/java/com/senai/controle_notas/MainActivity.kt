@@ -1,11 +1,16 @@
 package com.senai.controle_notas
 
 import android.graphics.Color
+import android.icu.number.CompactNotation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+
+private lateinit var nota1EditText: EditText
+private lateinit var nota2EditText: EditText
+private lateinit var nomeEditText: EditText
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,29 +21,42 @@ class MainActivity : AppCompatActivity() {
         val sair = findViewById<Button>(R.id.sair)
 
         calcular.setOnClickListener() {
-            val nota1 = findViewById<EditText>(R.id.nota1).text.toString().toInt()
-            val nota2 = findViewById<EditText>(R.id.nota2).text.toString().toInt()
-            val faltas = findViewById<EditText>(R.id.faltas).text.toString().toInt()
-            val resultado = findViewById<TextView>(R.id.resultado)
-            val situacao = findViewById<TextView>(R.id.situacao)
+            nota1EditText = findViewById<EditText>(R.id.nota1)
+            nota2EditText = findViewById<EditText>(R.id.nota2)
+            nomeEditText = findViewById<EditText>(R.id.nome)
 
-            val media = (nota1 + nota2) / 2
+            val resultadoTextView = findViewById<TextView>(R.id.resultado)
 
-            if (media >= 5) {
-                resultado.text = "Nota 1: " + nota1+ " \nNota 2: " + nota2 + " \nFaltas: " + faltas + " \nMédia: " + media
-                resultado.setTextColor(Color.BLACK)
-                situacao.text = "Situação: Aprovado(a)! :)"
-                situacao.setTextColor(Color.GREEN)
-            } else {
-                resultado.text = "Nota 1: " + nota1+ " \nNota 2: " + nota2 + " \nFaltas: " + faltas + " \nMédia: " + media + " \nSituação: Reprovado"
-                resultado.setTextColor(Color.BLACK)
-                situacao.text = "Situação: Reprovado(a)! :("
-                situacao.setTextColor(Color.RED)
+            if (validarCampos()) {
+                val nota1 = nota1EditText.text.toString().toInt()
+                val nota2 = nota2EditText.text.toString().toInt()
+                val nome = nomeEditText.text.toString()
+
+                val media = calcularMedia(nota1, nota2)
+
+                resultadoTextView.text = situacaoAluno(media)
             }
-        }
 
+        }
         sair.setOnClickListener() {
             finish()
         }
+
+    }
+    private fun validarCampos(): Boolean {
+        var noError = true
+        if (nota1EditText.text.isBlank()) {
+            nota1EditText.setError("Digita a nota 1!!")
+            noError = false
+        }
+        if (nota2EditText.text.isBlank()) {
+            nota2EditText.setError("Digite a nota 2!!")
+            noError = false
+        }
+        if (nomeEditText.text.isBlank()) {
+            nomeEditText.setError("Digite o nome do aluno!!")
+            noError = false
+        }
+        return noError
     }
 }
