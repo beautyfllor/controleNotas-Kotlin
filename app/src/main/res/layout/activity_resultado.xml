@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultadoActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Relatório do Aluno"
+        android:textSize="36sp"
+        android:layout_marginBottom="48dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp">
+
+    <TextView
+        android:text="Nome:"
+        style="@style/label" />
+    <TextView
+        android:id="@+id/nome"
+        style="@style/campos"/>
+
+        <TextView
+            android:text="Nota1"
+            style="@style/label"/>
+        <TextView
+            android:id="@+id/nota1"
+            style="@style/campos"/>
+
+        <TextView
+            android:text="Nota2"
+            style="@style/label"/>
+        <TextView
+            android:id="@+id/nota2"
+            style="@style/campos"/>
+
+        <TextView
+            android:text="Média"
+            style="@style/label"/>
+        <TextView
+            android:id="@+id/media"
+            style="@style/campos"/>
+
+        <TextView
+            android:text="Situação"
+            style="@style/label"/>
+        <TextView
+            android:id="@+id/situacao"
+            style="@style/campos"/>
+
+    </LinearLayout>
+
+</LinearLayout>

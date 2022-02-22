@@ -1,5 +1,6 @@
 package com.senai.controle_notas
 
+import android.content.Intent
 import android.graphics.Color
 import android.icu.number.CompactNotation
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +35,16 @@ class MainActivity : AppCompatActivity() {
 
                 val media = calcularMedia(nota1, nota2)
 
-                resultadoTextView.text = situacaoAluno(media)
+                /*resultadoTextView.text = situacaoAluno(media)*/
+
+                //Variável responsável por chamar a activity - intent: qualquer nome
+                val intent = Intent(this, ResultadoActivity::class.java)
+                intent.putExtra("nome", nomeEditText.text.toString())
+                intent.putExtra("nota1", "${nota1}")
+                intent.putExtra("nota2", nota2.toString())
+                intent.putExtra("media", "${media}")
+                intent.putExtra("situacao", situacaoAluno(media))
+                startActivity(intent);
             }
 
         }
